@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+#piano
+{
+position:relative;
+display:flex;
+width:600px;
+height:220px;
+}
+
+.branca
+{
+width:60px;
+height:220px;
+margin:0;
+padding-top:150px;
+background:white;
+border:1px solid black;
+border-radius:0 0 6px 6px;
+box-sizing:border-box;
+font-size:14px;
+}
+
+.preta
+{
+position:absolute;
+top:0;
+width:36px;
+height:135px;
+margin:0;
+padding-top:80px;
+background:black;
+color:white;
+border:1px solid black;
+border-radius:0 0 4px 4px;
+box-sizing:border-box;
+font-size:11px;
+z-index:1;
+}
+
+.branca:active
+{
+background:#ccc;
+}
+
+.preta:active
+{
+background:#555;
+}
+</style>
+</head>
+<body onkeydown="Mexe(event)">
+
+<audio id="n40" preload="auto"><source src="040.wav"></audio>
+<audio id="n41" preload="auto"><source src="041.wav"></audio>
+<audio id="n42" preload="auto"><source src="042.wav"></audio>
+<audio id="n43" preload="auto"><source src="043.wav"></audio>
+<audio id="n44" preload="auto"><source src="044.wav"></audio>
+<audio id="n45" preload="auto"><source src="045.wav"></audio>
+<audio id="n46" preload="auto"><source src="046.wav"></audio>
+<audio id="n47" preload="auto"><source src="047.wav"></audio>
+<audio id="n48" preload="auto"><source src="048.wav"></audio>
+<audio id="n49" preload="auto"><source src="049.wav"></audio>
+<audio id="n50" preload="auto"><source src="050.wav"></audio>
+<audio id="n51" preload="auto"><source src="051.wav"></audio>
+<audio id="n52" preload="auto"><source src="052.wav"></audio>
+<audio id="n53" preload="auto"><source src="053.wav"></audio>
+<audio id="n54" preload="auto"><source src="054.wav"></audio>
+<audio id="n55" preload="auto"><source src="055.wav"></audio>
+<audio id="n56" preload="auto"><source src="056.wav"></audio>
+<audio id="house" preload="auto"><source src="house.mp3"></audio>
+
+<div id="piano">
+<button class="branca" onclick="toca('n40')">do<br>a</button>
+<button class="branca" onclick="toca('n42')">re<br>s</button>
+<button class="branca" onclick="toca('n44')">mi<br>d</button>
+<button class="branca" onclick="toca('n45')">fa<br>f</button>
+<button class="branca" onclick="toca('n47')">sol<br>g</button>
+<button class="branca" onclick="toca('n49')">la<br>h</button>
+<button class="branca" onclick="toca('n51')">si<br>j</button>
+<button class="branca" onclick="toca('n52')">do<br>k</button>
+<button class="branca" onclick="toca('n54')">re<br>l</button>
+<button class="branca" onclick="toca('n56')">mi<br>ç</button>
+
+<button class="preta" style="left:42px" onclick="toca('n41')">do#<br>w</button>
+<button class="preta" style="left:102px" onclick="toca('n43')">re#<br>e</button>
+<button class="preta" style="left:222px" onclick="toca('n46')">fa#<br>t</button>
+<button class="preta" style="left:282px" onclick="toca('n48')">sol#<br>y</button>
+<button class="preta" style="left:342px" onclick="toca('n50')">la#<br>u</button>
+<button class="preta" style="left:462px" onclick="toca('n53')">do#<br>o</button>
+<button class="preta" style="left:522px" onclick="toca('n55')">re#<br>p</button>
+</div>
+
+<br>
+<button onclick="tocaHouse()" style="width:100px;height:50px">House</button>
+</body>
+
+
+
+<script>
+function toca(id)
+{
+document.getElementById(id).pause();
+document.getElementById(id).currentTime=0;
+document.getElementById(id).play();
+}
+
+function tocaHouse()
+{
+let musica=document.getElementById('house');
+if (musica.paused)
+    musica.play();
+else
+    {
+    musica.pause();
+    musica.currentTime=0;
+    }
+}
+
+function Mexe(event)
+{
+if (event.repeat)
+    return;
+
+if (event.key=="a")
+    toca('n40');
+else if (event.key=="w")
+    toca('n41');
+else if (event.key=="s")
+    toca('n42');
+else if (event.key=="e")
+    toca('n43');
+else if (event.key=="d")
+    toca('n44');
+else if (event.key=="f")
+    toca('n45');
+else if (event.key=="t")
+    toca('n46');
+else if (event.key=="g")
+    toca('n47');
+else if (event.key=="y")
+    toca('n48');
+else if (event.key=="h")
+    toca('n49');
+else if (event.key=="u")
+    toca('n50');
+else if (event.key=="j")
+    toca('n51');
+else if (event.key=="k")
+    toca('n52');
+else if (event.key=="o")
+    toca('n53');
+else if (event.key=="l")
+    toca('n54');
+else if (event.key=="p")
+    toca('n55');
+else if (event.key=="ç")
+    toca('n56');
+}
+</script>
+</html>
